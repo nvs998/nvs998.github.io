@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveen Soni — AI Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #0b111e; color: #94a3b8; font-family: 'Inter', system-ui, sans-serif; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 55%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-blur {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(11, 17, 30, 0.88);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .nav-link { position: relative; transition: color 0.2s; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: linear-gradient(90deg, #fff, #94a3b8);
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #fff; }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(148,163,184,0.2), transparent); }
+
+    .hero-glow { background: radial-gradient(ellipse 55% 45% at 50% 0%, rgba(148,163,184,0.07) 0%, transparent 70%); }
+
+    .skill-badge {
+      background: #131e30;
+      border: 1px solid rgba(148,163,184,0.15);
+      color: #94a3b8;
+      transition: all 0.2s;
+    }
+    .skill-badge:hover {
+      border-color: rgba(226,232,240,0.35);
+      background: rgba(226,232,240,0.06);
+      color: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    .project-card {
+      background: #0f1729;
+      border: 1px solid rgba(148,163,184,0.12);
+      transition: all 0.3s;
+    }
+    .project-card:hover {
+      border-color: rgba(226,232,240,0.28);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .soft-card {
+      background: #0f1729;
+      border: 1px solid rgba(148,163,184,0.12);
+      transition: all 0.2s;
+    }
+    .soft-card:hover { border-color: rgba(226,232,240,0.28); }
+
+    .timeline-dot  { background: linear-gradient(135deg, #e2e8f0, #94a3b8); }
+    .timeline-line { background: linear-gradient(180deg, rgba(148,163,184,0.35), rgba(148,163,184,0.04)); }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    .tag { background: #131e30; border: 1px solid rgba(148,163,184,0.18); color: #64748b; font-size: .7rem; padding: .2rem .55rem; border-radius: .25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav-blur fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <span style="font-family:monospace;color:#e2e8f0;font-weight:700;font-size:.88rem;letter-spacing:.06em;">&lt;NS /&gt;</span>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about"          class="nav-link text-sm" style="color:#64748b;">About</a>
+          <a href="#skills"         class="nav-link text-sm" style="color:#64748b;">Skills</a>
+          <a href="#experience"     class="nav-link text-sm" style="color:#64748b;">Experience</a>
+          <a href="#projects"       class="nav-link text-sm" style="color:#64748b;">Projects</a>
+          <a href="#certifications" class="nav-link text-sm" style="color:#64748b;">Certs</a>
+          <a href="mailto:naveen0906soni@gmail.com"
+             style="padding:.375rem 1.1rem;border-radius:9999px;border:1px solid rgba(226,232,240,0.3);color:#e2e8f0;font-size:.875rem;font-weight:500;transition:all .2s;"
+             onmouseover="this.style.background='rgba(226,232,240,0.08)'"
+             onmouseout="this.style.background='transparent'">Hire Me</a>
+        </div>
+
+        <button id="menu-toggle" class="md:hidden" style="color:#64748b;" aria-label="Toggle menu">
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" style="border-top:1px solid rgba(148,163,184,0.12);background:#0b111e;">
+      <div class="px-4 py-4 flex flex-col gap-4">
+        <a href="#about"          style="color:#64748b;font-size:.875rem;">About</a>
+        <a href="#skills"         style="color:#64748b;font-size:.875rem;">Skills</a>
+        <a href="#experience"     style="color:#64748b;font-size:.875rem;">Experience</a>
+        <a href="#projects"       style="color:#64748b;font-size:.875rem;">Projects</a>
+        <a href="#certifications" style="color:#64748b;font-size:.875rem;">Certifications</a>
+        <a href="mailto:naveen0906soni@gmail.com" style="color:#e2e8f0;font-size:.875rem;font-weight:600;">Hire Me →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-16" style="background:#080e1a;overflow:hidden;">
+
+    <!-- Neural network canvas background -->
+    <canvas id="neural-canvas" class="absolute inset-0 w-full h-full" style="opacity:.55;"></canvas>
+
+    <!-- Radial vignette: keeps text readable -->
+    <div class="absolute inset-0" style="background:radial-gradient(ellipse 80% 70% at 20% 50%, transparent 30%, rgba(8,14,26,0.75) 75%, rgba(8,14,26,0.95) 100%);"></div>
+
+    <!-- Bottom fade into next section -->
+    <div class="absolute bottom-0 left-0 right-0 h-32" style="background:linear-gradient(to bottom, transparent, #0b111e);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+      <div class="max-w-3xl">
+
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8"
+             style="border:1px solid rgba(226,232,240,0.15);background:rgba(8,14,26,0.5);backdrop-filter:blur(8px);">
+          <span class="w-2 h-2 rounded-full" style="background:#4ade80;box-shadow:0 0 6px #4ade80;"></span>
+          <span style="font-family:monospace;font-size:.73rem;color:#64748b;">Graduate Visa · Full UK Right to Work</span>
+        </div>
+
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-5" style="color:#fff;line-height:1.08;">
+          Naveen<br/>
+          <span class="gradient-text">Soni</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-10" style="color:#64748b;font-weight:400;">
+          Generative AI Engineer
+          <span style="color:rgba(226,232,240,.2);margin:0 .4rem;">·</span>RAG, LLMs &amp; AI Automation
+          <span style="color:rgba(226,232,240,.2);margin:0 .4rem;">·</span>AI Solutions &amp; Technical Support
+          <span style="color:rgba(226,232,240,.2);margin:0 .4rem;">·</span>Multi-Agent Systems
+        </p>
+
+        <div class="flex flex-wrap gap-5 mb-10 text-sm" style="color:#475569;">
+          <a href="tel:+447909454073"               style="display:flex;align-items:center;gap:.5rem;transition:color .2s;" onmouseover="this.style.color='#cbd5e1'" onmouseout="this.style.color='#475569'"><i class="fas fa-phone"></i> +447909454073</a>
+          <a href="mailto:naveen0906soni@gmail.com"  style="display:flex;align-items:center;gap:.5rem;transition:color .2s;" onmouseover="this.style.color='#cbd5e1'" onmouseout="this.style.color='#475569'"><i class="fas fa-envelope"></i> naveen0906soni@gmail.com</a>
+          <span style="display:flex;align-items:center;gap:.5rem;"><i class="fas fa-location-dot"></i> Leeds, UK</span>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="https://linkedin.com/in/nvs998" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:.5rem;border:1px solid rgba(226,232,240,0.18);color:#e2e8f0;background:rgba(8,14,26,0.55);backdrop-filter:blur(8px);font-size:.875rem;font-weight:500;transition:all .2s;"
+             onmouseover="this.style.background='rgba(226,232,240,0.1)';this.style.borderColor='rgba(226,232,240,0.3)'"
+             onmouseout="this.style.background='rgba(8,14,26,0.55)';this.style.borderColor='rgba(226,232,240,0.18)'">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/nvs998" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:.5rem;border:1px solid rgba(148,163,184,0.18);color:#94a3b8;background:rgba(8,14,26,0.55);backdrop-filter:blur(8px);font-size:.875rem;font-weight:500;transition:all .2s;"
+             onmouseover="this.style.color='#fff';this.style.borderColor='rgba(148,163,184,0.35)'"
+             onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(148,163,184,0.18)'">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="mailto:naveen0906soni@gmail.com"
+             style="display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:.5rem;border:1px solid rgba(255,255,255,0.22);color:#fff;background:rgba(255,255,255,0.09);backdrop-filter:blur(8px);font-size:.875rem;font-weight:600;transition:all .2s;"
+             onmouseover="this.style.background='rgba(255,255,255,0.16)'"
+             onmouseout="this.style.background='rgba(255,255,255,0.09)'">
+            <i class="fas fa-paper-plane"></i> Get in Touch
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1" style="opacity:.35;z-index:1;">
+      <span style="font-family:monospace;font-size:.65rem;color:#64748b;">scroll</span>
+      <i class="fas fa-chevron-down animate-bounce" style="color:#64748b;font-size:.65rem;"></i>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24" style="background:#0d1525;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p style="font-family:monospace;font-size:.72rem;color:#475569;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;">01 · About</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-12" style="color:#f1f5f9;">Who I Am</h3>
+      </div>
+
+      <div class="reveal grid lg:grid-cols-2 gap-14 items-start">
+        <!-- Left: bio + stats -->
+        <div>
+          <div class="space-y-5 leading-relaxed text-base mb-8" style="color:#64748b;">
+            <p>I'm an AI Engineer with over <span style="color:#e2e8f0;font-weight:500;">2 years of experience</span> deploying enterprise data pipelines and serverless backend architectures, blending strong software engineering fundamentals with cutting-edge AI capabilities.</p>
+            <p>I hold an <span style="color:#e2e8f0;font-weight:500;">MSc in Advanced Computer Science (AI)</span> from the University of Leeds, where I graduated with <span style="color:#fff;font-weight:700;">Distinction</span>.</p>
+            <p>My hands-on expertise spans full-stack development (MERN, Node.js, Python, SailsJS) and AI technologies including <span style="color:#cbd5e1;font-weight:500;">LLMs, RAG pipelines, and multi-agent systems</span>.</p>
+            <p>My focus is on building AI systems that are <span style="color:#94a3b8;">robust, practical, explainable, and easy to adopt</span> in real-world environments.</p>
+          </div>
+          <!-- Stat row -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-3">
+            <div class="p-4 rounded-xl soft-card text-center">
+              <div class="text-2xl font-bold gradient-text">2+</div>
+              <div class="text-xs mt-1" style="color:#475569;">Years Exp.</div>
+            </div>
+            <div class="p-4 rounded-xl soft-card text-center">
+              <div class="text-2xl font-bold gradient-text">$40B+</div>
+              <div class="text-xs mt-1" style="color:#475569;">Automated</div>
+            </div>
+            <div class="p-4 rounded-xl soft-card text-center">
+              <div class="text-2xl font-bold gradient-text">46.2%</div>
+              <div class="text-xs mt-1" style="color:#475569;">Accuracy ↑</div>
+            </div>
+            <div class="p-4 rounded-xl soft-card text-center">
+              <div class="text-2xl font-bold gradient-text">8.0</div>
+              <div class="text-xs mt-1" style="color:#475569;">IELTS</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: education cards -->
+        <div class="flex flex-col gap-4">
+          <div class="p-6 rounded-2xl soft-card">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.12);">
+                <i class="fas fa-graduation-cap" style="color:#e2e8f0;font-size:1rem;"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold" style="color:#f1f5f9;">M.Sc. Advanced Computer Science</h4>
+                <p class="text-sm mt-0.5" style="color:#475569;">University of Leeds</p>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span style="color:#475569;">Duration</span><span style="color:#94a3b8;font-family:monospace;font-size:.8rem;">09/2024 – 09/2025</span></div>
+              <div class="flex justify-between"><span style="color:#475569;">Classification</span><span style="color:#f1f5f9;font-weight:700;">Distinction</span></div>
+              <div class="pt-3" style="border-top:1px solid rgba(148,163,184,0.1);">
+                <p class="text-xs mb-1" style="color:#475569;">Key Modules</p>
+                <p class="text-xs leading-relaxed" style="color:#475569;">Deep Learning, Machine Learning, Cloud Computing Systems</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl soft-card">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(148,163,184,0.06);border:1px solid rgba(148,163,184,0.14);">
+                <i class="fas fa-university" style="color:#94a3b8;font-size:1rem;"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold" style="color:#f1f5f9;">B.Tech — Computer Science &amp; Engineering</h4>
+                <p class="text-sm mt-0.5" style="color:#475569;">JECRC University</p>
+              </div>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span style="color:#475569;">Duration</span><span style="color:#94a3b8;font-family:monospace;font-size:.8rem;">06/2018 – 06/2022</span></div>
+              <div class="flex justify-between"><span style="color:#475569;">CGPA</span><span style="color:#f1f5f9;font-weight:700;">8.75 / 10</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-24" style="background:#0b111e;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p style="font-family:monospace;font-size:.72rem;color:#475569;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;">02 · Skills</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-12" style="color:#f1f5f9;">Technical Expertise</h3>
+      </div>
+
+      <div class="reveal space-y-4">
+
+        <div class="p-6 rounded-2xl soft-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-brain" style="color:#94a3b8;font-size:.75rem;"></i>
+            </div>
+            <h4 class="font-semibold" style="color:#e2e8f0;">AI &amp; Machine Learning</h4>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Large Language Models (LLMs)</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">NLP</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Retrieval-Augmented Generation (RAG)</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Embeddings</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">AI Agents</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Model Evaluation</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Prompt Engineering</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Text Classification</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Transformers</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl soft-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-database" style="color:#94a3b8;font-size:.75rem;"></i>
+            </div>
+            <h4 class="font-semibold" style="color:#e2e8f0;">Vector Search &amp; RAG</h4>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Pinecone</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Qdrant</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">FAISS</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">ChromaDB</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Semantic Search</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Document Chunking</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl soft-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-diagram-project" style="color:#94a3b8;font-size:.75rem;"></i>
+            </div>
+            <h4 class="font-semibold" style="color:#e2e8f0;">AI Orchestration &amp; Low-code</h4>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">CrewAI</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">n8n</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Make</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">NotebookLM</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Relevance AI</span>
+            <span class="skill-badge px-3 py-1 rounded-full text-xs">Agentic Workflows</span>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="p-5 rounded-2xl soft-card">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-code" style="color:#94a3b8;font-size:.875rem;"></i>
+              <h4 class="text-sm font-semibold" style="color:#e2e8f0;">Backend &amp; APIs</h4>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Python</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Node.js</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">SailsJS</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">FastAPI</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">RESTful APIs</span>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl soft-card">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-cloud" style="color:#94a3b8;font-size:.875rem;"></i>
+              <h4 class="text-sm font-semibold" style="color:#e2e8f0;">Cloud &amp; Deployment</h4>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">AWS Lambda</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">AWS Bedrock</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Azure Functions</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Serverless</span>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl soft-card">
+            <div class="flex items-center gap-2 mb-3">
+              <i class="fas fa-layer-group" style="color:#94a3b8;font-size:.875rem;"></i>
+              <h4 class="text-sm font-semibold" style="color:#e2e8f0;">Data &amp; Frameworks</h4>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">SQL</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">MongoDB</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Firebase</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">LangChain</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">PyTorch</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">TensorFlow</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Scikit-learn</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">Pandas</span>
+              <span class="skill-badge px-2 py-0.5 rounded-full text-xs">NumPy</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-24" style="background:#0d1525;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p style="font-family:monospace;font-size:.72rem;color:#475569;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;">03 · Experience</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-12" style="color:#f1f5f9;">Work History</h3>
+      </div>
+
+      <div class="reveal relative max-w-3xl">
+        <div class="absolute left-4 top-4 bottom-4 w-0.5 timeline-line md:left-6"></div>
+
+        <div class="relative flex gap-6 md:gap-10 mb-12">
+          <div class="flex-shrink-0 mt-1">
+            <div class="timeline-dot w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center" style="box-shadow:0 4px 16px rgba(148,163,184,0.15);">
+              <i class="fas fa-building text-xs md:text-sm" style="color:#0f1729;"></i>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h4 class="text-lg font-semibold" style="color:#f1f5f9;">Software Developer</h4>
+              <span style="font-family:monospace;font-size:.72rem;padding:.15rem .5rem;border-radius:.3rem;background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.12);color:#94a3b8;">Full-time</span>
+            </div>
+            <p class="text-sm mb-1" style="color:#64748b;">Formidium India Pvt. Ltd. · Jaipur</p>
+            <p class="text-xs mb-5" style="font-family:monospace;color:#475569;">Jul 2022 – Aug 2024</p>
+            <ul class="space-y-2.5 text-sm" style="color:#64748b;">
+              <li class="flex gap-2"><span style="color:#94a3b8;margin-top:.125rem;flex-shrink:0;">▸</span>Aided in the development of an End-to-End Investor Onboarding Platform, reducing onboarding time by <strong style="color:#e2e8f0;font-weight:500;"> 50%</strong>.</li>
+              <li class="flex gap-2"><span style="color:#94a3b8;margin-top:.125rem;flex-shrink:0;">▸</span>Automated manual capital calls for <strong style="color:#e2e8f0;font-weight:500;"> 1,200+ funds</strong> using SailsJS, improving efficiency by <strong style="color:#e2e8f0;font-weight:500;"> 70%</strong> and providing real-time oversight for <strong style="color:#e2e8f0;font-weight:500;"> $40B+</strong> in subscriptions.</li>
+              <li class="flex gap-2"><span style="color:#94a3b8;margin-top:.125rem;flex-shrink:0;">▸</span>Constructed AWS Lambda ETL pipelines reducing reconciliation errors by <strong style="color:#e2e8f0;font-weight:500;"> 60%</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative flex gap-6 md:gap-10">
+          <div class="flex-shrink-0 mt-1">
+            <div class="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center" style="background:rgba(148,163,184,0.07);border:1px solid rgba(148,163,184,0.2);">
+              <i class="fas fa-laptop-code text-xs md:text-sm" style="color:#64748b;"></i>
+            </div>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <h4 class="text-lg font-semibold" style="color:#f1f5f9;">Application Developer Intern</h4>
+              <span style="font-family:monospace;font-size:.72rem;padding:.15rem .5rem;border-radius:.3rem;background:rgba(148,163,184,0.06);border:1px solid rgba(148,163,184,0.15);color:#64748b;">Internship</span>
+            </div>
+            <p class="text-sm mb-1" style="color:#64748b;">Ethereal Softech Pvt. Ltd. · Jaipur</p>
+            <p class="text-xs mb-5" style="font-family:monospace;color:#475569;">Jan 2022 – Jun 2022</p>
+            <ul class="space-y-2.5 text-sm" style="color:#64748b;">
+              <li class="flex gap-2"><span style="color:#64748b;margin-top:.125rem;flex-shrink:0;">▸</span>Developed a cross-platform mobile application using Flutter, increasing user engagement by <strong style="color:#e2e8f0;font-weight:500;"> 27%</strong>.</li>
+              <li class="flex gap-2"><span style="color:#64748b;margin-top:.125rem;flex-shrink:0;">▸</span>Implemented core features including property listing and asynchronous event-driven email workflows.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24" style="background:#0b111e;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p style="font-family:monospace;font-size:.72rem;color:#475569;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;">04 · Projects</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-12" style="color:#f1f5f9;">Selected Work</h3>
+      </div>
+
+      <div class="reveal grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div class="project-card rounded-2xl p-6 flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-shield-halved" style="color:#94a3b8;font-size:.9rem;"></i>
+            </div>
+            <span style="font-family:monospace;font-size:.7rem;color:#334155;margin-top:.3rem;white-space:nowrap;">Jun 2026 – Present</span>
+          </div>
+          <h4 class="font-semibold text-lg mb-2" style="color:#f1f5f9;">AML Triaging Engine</h4>
+          <p class="text-sm leading-relaxed flex-1 mb-4" style="color:#475569;">Asynchronous financial compliance microservice using Python and FastAPI for ISO 20022 transactions. Orchestrated a 3-stage CrewAI/LLM workflow for OSINT lookups, deployed to Azure Container Apps.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">CrewAI</span><span class="tag">Azure</span>
+          </div>
+        </div>
+
+        <div class="project-card rounded-2xl p-6 flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-terminal" style="color:#94a3b8;font-size:.9rem;"></i>
+            </div>
+            <span style="font-family:monospace;font-size:.7rem;color:#334155;margin-top:.3rem;white-space:nowrap;">Mar – Apr 2026</span>
+          </div>
+          <h4 class="font-semibold text-lg mb-2" style="color:#f1f5f9;">ClaudeShell · Agentic CLI Assistant</h4>
+          <p class="text-sm leading-relaxed flex-1 mb-4" style="color:#475569;">Terminal-based AI assistant powered by Anthropic Claude and Model Context Protocol (MCP). Engineered multi-client orchestration for autonomous file operations.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Anthropic Claude</span><span class="tag">MCP</span><span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card rounded-2xl p-6 flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-magnifying-glass-chart" style="color:#94a3b8;font-size:.9rem;"></i>
+            </div>
+            <span style="font-family:monospace;font-size:.7rem;color:#334155;margin-top:.3rem;white-space:nowrap;">May – Sep 2025</span>
+          </div>
+          <h4 class="font-semibold text-lg mb-2" style="color:#f1f5f9;">Enterprise RAG Engine</h4>
+          <p class="text-sm leading-relaxed flex-1 mb-4" style="color:#475569;">MSc Dissertation RAG pipeline using Python, LangChain, and FAISS. Validated a <span style="color:#cbd5e1;font-weight:500;">46.2% increase</span> in factual accuracy and <span style="color:#cbd5e1;font-weight:500;">28.4% reduction</span> in hallucination.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">FAISS</span>
+          </div>
+        </div>
+
+        <div class="project-card rounded-2xl p-6 flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-chart-line" style="color:#94a3b8;font-size:.9rem;"></i>
+            </div>
+            <span style="font-family:monospace;font-size:.7rem;color:#334155;margin-top:.3rem;white-space:nowrap;">Nov – Dec 2024</span>
+          </div>
+          <h4 class="font-semibold text-lg mb-2" style="color:#f1f5f9;">ML System for Behaviour Prediction</h4>
+          <p class="text-sm leading-relaxed flex-1 mb-4" style="color:#475569;">End-to-end ML pipeline in Python using Scikit-Learn to analyse gaming behaviour and social isolation patterns.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span>
+          </div>
+        </div>
+
+        <div class="project-card rounded-2xl p-6 flex flex-col">
+          <div class="flex items-start justify-between gap-2 mb-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.1);">
+              <i class="fas fa-mobile-screen" style="color:#94a3b8;font-size:.9rem;"></i>
+            </div>
+            <span style="font-family:monospace;font-size:.7rem;color:#334155;margin-top:.3rem;">2021</span>
+          </div>
+          <h4 class="font-semibold text-lg mb-2" style="color:#f1f5f9;">Outlay Pal &amp; Basil Hut</h4>
+          <p class="text-sm leading-relaxed flex-1 mb-4" style="color:#475569;">Cross-platform mobile apps — an Expense Management tool and a Food-Ordering platform, built with Flutter and Firebase.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Dart</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="py-24" style="background:#0b111e;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <p style="font-family:monospace;font-size:.72rem;color:#475569;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.4rem;">05 · Certifications</p>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-12" style="color:#f1f5f9;">Credentials &amp; Scores</h3>
+      </div>
+
+      <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="soft-card rounded-xl p-5 flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.12);">
+            <i class="fas fa-certificate" style="color:#94a3b8;"></i>
+          </div>
+          <div>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">Introduction to Model Context Protocol</p>
+            <p class="text-xs mt-0.5" style="color:#475569;">Anthropic · Apr 2026</p>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-xl p-5 flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(226,232,240,0.06);border:1px solid rgba(226,232,240,0.12);">
+            <i class="fas fa-certificate" style="color:#94a3b8;"></i>
+          </div>
+          <div>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">Claude Code in Action</p>
+            <p class="text-xs mt-0.5" style="color:#475569;">Anthropic · Mar 2026</p>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-xl p-5 flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(148,163,184,0.06);border:1px solid rgba(148,163,184,0.14);">
+            <i class="fab fa-google" style="color:#64748b;"></i>
+          </div>
+          <div>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">Qwiklabs Profile — GCP</p>
+            <p class="text-xs mt-0.5" style="color:#475569;">Google Cloud · Oct 2020</p>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-xl p-5 flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(100,116,139,0.06);border:1px solid rgba(100,116,139,0.16);">
+            <i class="fas fa-globe" style="color:#64748b;"></i>
+          </div>
+          <div>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">Web Development Series</p>
+            <p class="text-xs mt-0.5" style="color:#475569;">University of Michigan · May – Jun 2020</p>
+            <p class="text-xs mt-0.5" style="color:#334155;">HTML5, CSS3, JavaScript, Responsive Design</p>
+          </div>
+        </div>
+
+        <div class="soft-card rounded-xl p-5 flex items-start gap-4">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(226,232,240,0.05);border:1px solid rgba(226,232,240,0.1);">
+            <i class="fas fa-language" style="color:#94a3b8;"></i>
+          </div>
+          <div>
+            <p class="text-sm font-medium" style="color:#e2e8f0;">IELTS Score</p>
+            <p class="text-xs mt-1" style="color:#475569;">Overall Band <span style="color:#f1f5f9;font-size:1.1rem;font-weight:700;">8.0</span></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid rgba(148,163,184,0.1);padding:2.5rem 0;background:#080e1a;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-center sm:text-left">
+          <p style="font-family:monospace;color:#e2e8f0;font-weight:700;font-size:.88rem;">&lt;NS /&gt;</p>
+          <p class="text-xs mt-1" style="color:#334155;">Naveen Soni · Generative AI Engineer · Leeds, UK</p>
+        </div>
+        <div class="flex items-center gap-5">
+          <a href="mailto:naveen0906soni@gmail.com" style="color:#334155;font-size:1.1rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#334155'"><i class="fas fa-envelope"></i></a>
+          <a href="https://linkedin.com/in/nvs998" target="_blank" rel="noopener" style="color:#334155;font-size:1.1rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#334155'"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/nvs998" target="_blank" rel="noopener" style="color:#334155;font-size:1.1rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#334155'"><i class="fab fa-github"></i></a>
+          <a href="tel:+447909454073" style="color:#334155;font-size:1.1rem;transition:color .2s;" onmouseover="this.style.color='#e2e8f0'" onmouseout="this.style.color='#334155'"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <p class="text-center text-xs mt-8" style="color:#1e293b;">&copy; 2026 Naveen Soni. Built with Tailwind CSS.</p>
+    </div>
+  </footer>
+
+  <!-- Neural network background -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('neural-canvas');
+      const ctx    = canvas.getContext('2d');
+      const COUNT  = 90;
+      const MAX_DIST = 160;
+      const PULSE_SPEED = 0.012;
+
+      let W, H, nodes, pulses;
+
+      function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+      }
+
+      function randomNode() {
+        return {
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          r:  Math.random() * 1.8 + 0.8,
+          pulse: Math.random() * Math.PI * 2,   // phase offset for glow
+        };
+      }
+
+      function randomPulse(a, b) {
+        return { a, b, t: 0, speed: PULSE_SPEED + Math.random() * 0.01 };
+      }
+
+      function init() {
+        nodes  = Array.from({ length: COUNT }, randomNode);
+        pulses = [];
+        // seed a handful of pulses
+        for (let i = 0; i < 8; i++) {
+          const a = Math.floor(Math.random() * COUNT);
+          const b = Math.floor(Math.random() * COUNT);
+          pulses.push(randomPulse(a, b));
+        }
+      }
+
+      function dist(a, b) {
+        const dx = a.x - b.x, dy = a.y - b.y;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+      function draw(ts) {
+        ctx.clearRect(0, 0, W, H);
+
+        // Update nodes
+        for (const n of nodes) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > W) n.vx *= -1;
+          if (n.y < 0 || n.y > H) n.vy *= -1;
+          n.pulse += 0.025;
+        }
+
+        // Draw edges
+        for (let i = 0; i < COUNT; i++) {
+          for (let j = i + 1; j < COUNT; j++) {
+            const d = dist(nodes[i], nodes[j]);
+            if (d < MAX_DIST) {
+              const alpha = (1 - d / MAX_DIST) * 0.18;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(148,163,184,${alpha})`;
+              ctx.lineWidth   = 0.6;
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw pulses travelling along edges
+        for (let p of pulses) {
+          const a = nodes[p.a], b = nodes[p.b];
+          const d = dist(a, b);
+          if (d < MAX_DIST) {
+            p.t += p.speed;
+            if (p.t > 1) {
+              // reassign to a new random edge
+              p.a = Math.floor(Math.random() * COUNT);
+              p.b = Math.floor(Math.random() * COUNT);
+              p.t = 0;
+            }
+            const px = a.x + (b.x - a.x) * p.t;
+            const py = a.y + (b.y - a.y) * p.t;
+            const grd = ctx.createRadialGradient(px, py, 0, px, py, 5);
+            grd.addColorStop(0, 'rgba(226,232,240,0.9)');
+            grd.addColorStop(1, 'rgba(226,232,240,0)');
+            ctx.beginPath();
+            ctx.arc(px, py, 5, 0, Math.PI * 2);
+            ctx.fillStyle = grd;
+            ctx.fill();
+          }
+        }
+
+        // Spawn new pulses randomly
+        if (Math.random() < 0.018) {
+          pulses.push(randomPulse(
+            Math.floor(Math.random() * COUNT),
+            Math.floor(Math.random() * COUNT)
+          ));
+          if (pulses.length > 20) pulses.shift();
+        }
+
+        // Draw nodes
+        for (const n of nodes) {
+          const glow = (Math.sin(n.pulse) + 1) / 2;
+          const alpha = 0.35 + glow * 0.45;
+          const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 3);
+          grd.addColorStop(0, `rgba(226,232,240,${alpha})`);
+          grd.addColorStop(1, 'rgba(148,163,184,0)');
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r * 3, 0, Math.PI * 2);
+          ctx.fillStyle = grd;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(226,232,240,${0.5 + glow * 0.4})`;
+          ctx.fill();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', () => { resize(); });
+      resize();
+      init();
+      requestAnimationFrame(draw);
+    })();
+  </script>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu   = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + current ? '#e2e8f0' : '#64748b';
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>
